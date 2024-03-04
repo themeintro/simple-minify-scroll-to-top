@@ -1,0 +1,11 @@
+.topcontrol {
+    cursor: pointer;
+    padding: 6px 12px;
+    position: fixed;
+    -webkit-transition: all 0.2s ease 0s;
+    transition: all 0.2s ease 0s;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

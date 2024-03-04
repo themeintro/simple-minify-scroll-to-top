@@ -1,0 +1,53 @@
+/* smstt-admin-style.css */
+
+/* Style for the plugin page wrapper */
+.wrap {
+  margin: 20px;
+  background-color: #fff;
+  padding: 20px;
+}
+
+/* Style for the form table */
+.smstt-form-table {
+  width: 100%;
+  max-width: 600px;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.smstt-form-table th,
+.smstt-form-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Style for the input field */
+#input_field {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px;
+  border-radius: 0px;
+}
+
+/* Optional: Style for the submit button */
+.submit {
+  margin-top: 20px;
+}
+.smstt_plugin_page-area {
+  display: flex;
+  justify-content: space-between;
+
+}
+.smstt-about-box {
+  width: 20%;
+  border-radius: 5px;
+  
+}
+.smstt-option-box{
+  border-radius: 5px;
+
+}
+.wrap.smstt-about-box p {
+  font-size: 16px;
+}
