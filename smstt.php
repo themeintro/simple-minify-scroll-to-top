@@ -10,7 +10,7 @@
  * Author URI:        https://themeintro.com/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       smstt
+ * Text Domain:       simple-minify-scroll-to-top-main
  */
 
 if (!defined('ABSPATH')) {

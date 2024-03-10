@@ -26,12 +26,15 @@ class SMSTT_Backend {
     public function smstt_enqueue_plugin_styles(){
 
         global $pagenow;
-
+    
         // Check if it is the admin page and the specific page you want
         if (is_admin() && $pagenow === 'admin.php' && isset($_GET['page']) && $_GET['page'] === 'smstt-scrolltotop') {
             // Enqueue your scripts or styles here
             wp_enqueue_style('smstt-backend-styles', plugin_dir_url(__FILE__) . 'assets/css/backend-style.css', array(), '1.0');
         }
+    
+        // Add nonce verification
+        wp_nonce_field( 'smstt_nonce_action', 'smstt_nonce_field' );
     }
     public function smstt_plugin_page() {
         ?>
