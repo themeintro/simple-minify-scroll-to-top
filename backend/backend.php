@@ -34,17 +34,105 @@ class SMSTT_Backend {
         }
     }
     public function smstt_plugin_page() {
-
-      
         ?>
         <div class="smstt_plugin_page-area">
             <div class="wrap smstt-option-box">
                 <h1><?php esc_html_e( 'Scroll To Top Settings','smstt');?></h1>
-    
                 <form method="post" action="">
                     <?php wp_nonce_field( 'smstt_submit_data', 'smstt_nonce' ); ?>
                     <table class="smstt-form-table">
-                        <!-- Your form fields -->
+                        <tr>
+                            <th scope="row"><label for="smstt_icon_color"><?php esc_html_e( 'Icon color :','smstt');?></label></th>
+                            <td>
+                                <input type="color" id="smstt_icon_color" name="smstt_icon_color" value="<?php echo esc_attr(get_option('smstt_icon_color','#fff')); ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><label for="smstt_icon_bg_color"><?php esc_html_e( 'Background color :','smstt');?></label></th>
+                            <td>
+                                <input type="color" id="smstt_icon_bg_color" name="smstt_icon_bg_color" value="<?php echo esc_attr(get_option('smstt_icon_bg_color')); ?>" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="smstt_icon_hover_color"><?php esc_html_e( 'Icon hover color :','smstt');?></label></th>
+                            <td>
+                                <input type="color" id="smstt_icon_hover_color" name="smstt_icon_hover_color" value="<?php echo esc_attr(get_option('smstt_icon_hover_color')); ?>" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="smstt_icon_bg_hover_color"><?php esc_html_e( 'Icon hover bg color :','smstt');?></label></th>
+                            <td>
+                                <input type="color" id="smstt_icon_bg_hover_color" name="smstt_icon_bg_hover_color" value="<?php echo esc_attr(get_option('smstt_icon_bg_hover_color')); ?>" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="smstt_icon_size_input"><?php esc_html_e( 'Icon Size :','smstt');?></label></th>
+                            <td>
+                                <input type="text" id="smstt_icon_size_input" placeholder="15px" name="smstt_icon_size_input" value="<?php echo esc_attr(get_option('smstt_icon_size_input')); ?>" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="smstt_icon_border_radius"><?php esc_html_e( 'Border Radius :','smstt');?></label></th>
+                            <td>
+                                <input type="text" id="smstt_icon_border_radius" placeholder="5px" name="smstt_icon_border_radius" value="<?php echo esc_attr(get_option('smstt_icon_border_radius')); ?>" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="smstt_icon_bottom"><?php esc_html_e( 'Distance :','smstt');?></label></th>
+                            <td>
+                                <input type="text" id="smstt_icon_bottom" placeholder="5px" name="smstt_icon_bottom" value="<?php echo esc_attr(get_option('smstt_icon_bottom')); ?>" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="smstt_icon_heght"><?php esc_html_e( 'Heght :','smstt');?></label></th>
+                            <td>
+                                <input type="text" id="smstt_icon_heght" placeholder="40px" name="smstt_icon_heght" value="<?php echo esc_attr(get_option('smstt_icon_heght')); ?>" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="smstt_icon_width"><?php esc_html_e( 'Width :','smstt');?></label></th>
+                            <td>
+                                <input type="text" id="smstt_icon_width" name="smstt_icon_width" placeholder="40px" value="<?php echo esc_attr(get_option('smstt_icon_width')); ?>" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="smstt_dropdown_possion_option"><?php esc_html_e( 'Select Possion:', 'smstt' ); ?></label></th>
+                            <td>
+                                <select id="smstt_dropdown_possion_option" name="smstt_dropdown_possion_option">
+                                    <?php
+                                    $smstt_dropdown_possion_option = get_option('smstt_dropdown_possion_option');
+                                    $smstt_options = array(
+                                        'right' => 'Right',
+                                        'left' => 'Left',
+                                    );
+
+                                    foreach ($smstt_options as $smstt_value => $smstt_label) {
+                                        echo '<option value="' . esc_attr($smstt_value) . '" ' . selected($smstt_dropdown_possion_option, $smstt_value, false) . '>' . esc_html($smstt_label) . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><?php esc_html_e( 'Select Icon :', 'smstt' ); ?></th>
+                            <td>
+                                <?php
+                                $smstt_radio_icon_option = get_option('smstt_radio_icon_option', 'fa-solid fa-chevron-up');
+                                $smstt_radio_radio_options = array(
+                                    'fa-solid fa-chevron-up' => 'Top',
+                                    'fa-solid fa-chevron-left' => 'Left',
+                                    'fa-solid fa-chevron-right' => 'Right',
+                                    'fa-solid fa-chevron-down' => 'Down',
+                                );
+
+                                foreach ($smstt_radio_radio_options as $smstt_radio_icon_option_value => $smstt_radio_icon_options_label) {
+                                    echo '<label><input type="radio" name="smstt_radio_icon_option" value="' . esc_attr($smstt_radio_icon_option_value) . '" ' . checked($smstt_radio_icon_option, $smstt_radio_icon_option_value, false) . ' /> ' . esc_html($smstt_radio_icon_options_label) . '</label><br>';
+                                }
+                                ?>
+                            </td>
+                        </tr>
+
                     </table>
                     <?php submit_button(); ?>
                 </form>
@@ -86,7 +174,7 @@ class SMSTT_Backend {
     // Style Css Add
     public function smstt_head_style() {
         ?>
-            <!-- CSS -->
+        <!-- CSS -->
             <style>
                 .topcontrol{
                     font-size: <?php echo esc_attr(get_option('smstt_icon_size_input', '10px')); ?>;
@@ -111,80 +199,7 @@ class SMSTT_Backend {
 
     public function smstt_wp_footer_script(){
         ?>
-        <!-- JavaScript -->
-        <script>
-            jQuery(document).ready(function($){
-            var scrolltotop={
-                //startline: Integer. Number of pixels from top of doc scrollbar is scrolled before showing control
-                //scrollto: Keyword (Integer, or "Scroll_to_Element_ID"). How far to scroll document up when control is clicked on (0=top).
-                setting: {startline:100, scrollto: 0, scrollduration:1000, fadeduration:[500, 100]},
-                controlHTML: ' <i class="<?php echo esc_attr(get_option('smstt_radio_icon_option', 'fa-solid fa-chevron-up'))?> smsttscrolltop"></i>', //HTML for control, which is auto wrapped in DIV w/ ID="topcontrol"
-                controlattrs: {offsetx:5, offsety:5}, //offset of control relative to right/ bottom of window corner
-                anchorkeyword: '#top', //Enter href value of HTML anchors on the page that should also act as "Scroll Up" links
-
-                state: {isvisible:false, shouldvisible:false},
-
-                scrollup:function(){
-                    if (!this.cssfixedsupport) //if control is positioned using JavaScript
-                        this.$control.css({opacity:0}) //hide control immediately after clicking it
-                    var dest=isNaN(this.setting.scrollto)? this.setting.scrollto : parseInt(this.setting.scrollto)
-                    if (typeof dest=="string" && jQuery('#'+dest).length==1) //check element set by string exists
-                        dest=jQuery('#'+dest).offset().top
-                    else
-                        dest=0
-                    this.$body.animate({scrollTop: dest}, this.setting.scrollduration);
-                },
-
-                keepfixed:function(){
-                    var $window=jQuery(window)
-                    var controlx=$window.scrollLeft() + $window.width() - this.$control.width() - this.controlattrs.offsetx
-                    var controly=$window.scrollTop() + $window.height() - this.$control.height() - this.controlattrs.offsety
-                    this.$control.css({left:controlx+'px', top:controly+'px'})
-                },
-
-                togglecontrol:function(){
-                    var scrolltop=jQuery(window).scrollTop()
-                    if (!this.cssfixedsupport)
-                        this.keepfixed()
-                    this.state.shouldvisible=(scrolltop>=this.setting.startline)? true : false
-                    if (this.state.shouldvisible && !this.state.isvisible){
-                        this.$control.stop().animate({opacity:1}, this.setting.fadeduration[0])
-                        this.state.isvisible=true
-                    }
-                    else if (this.state.shouldvisible==false && this.state.isvisible){
-                        this.$control.stop().animate({opacity:0}, this.setting.fadeduration[1])
-                        this.state.isvisible=false
-                    }
-                },
-                
-                init:function(){
-                    jQuery(document).ready(function($){
-                        var mainobj=scrolltotop
-                        var iebrws=document.all
-                        mainobj.cssfixedsupport=!iebrws || iebrws && document.compatMode=="CSS1Compat" && window.XMLHttpRequest //not IE or IE7+ browsers in standards mode
-                        mainobj.$body=(window.opera)? (document.compatMode=="CSS1Compat"? $('html') : $('body')) : $('html,body')
-                        mainobj.$control=$('<div id="topcontrol" class="topcontrol">'+mainobj.controlHTML+'</div>')
-                            .css({position:mainobj.cssfixedsupport? 'fixed' : 'absolute', bottom:mainobj.controlattrs.offsety, right:mainobj.controlattrs.offsetx, opacity:0, cursor:'pointer'})
-                            .attr({title:''})
-                            .click(function(){mainobj.scrollup(); return false})
-                            .appendTo('body')
-                        if (document.all && !window.XMLHttpRequest && mainobj.$control.text()!='') //loose check for IE6 and below, plus whether control contains any text
-                            mainobj.$control.css({width:mainobj.$control.width()}) //IE6- seems to require an explicit width on a DIV containing text
-                        mainobj.togglecontrol()
-                        $('a[href="' + mainobj.anchorkeyword +'"]').click(function(){
-                            mainobj.scrollup()
-                            return false
-                        })
-                        $(window).bind('scroll resize', function(e){
-                            mainobj.togglecontrol()
-                        })
-                    })
-                }
-            }
-
-            scrolltotop.init();
-            });
-        </script>
+        <!-- Your JavaScript -->
         <?php
     }
     
