@@ -42,99 +42,9 @@ class SMSTT_Backend {
                 <h1><?php esc_html_e( 'Scroll To Top Settings','smstt');?></h1>
     
                 <form method="post" action="">
+                    <?php wp_nonce_field( 'smstt_submit_data', 'smstt_nonce' ); ?>
                     <table class="smstt-form-table">
-                        <tr>
-                            <th scope="row"><label for="smstt_icon_color"><?php esc_html_e( 'Icon color :','smstt');?></label></th>
-                            <td>
-                                <input type="color" id="smstt_icon_color" name="smstt_icon_color" value="<?php echo esc_attr(get_option('smstt_icon_color','#fff')); ?>" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row"><label for="smstt_icon_bg_color"><?php esc_html_e( 'Background color :','smstt');?></label></th>
-                            <td>
-                                <input type="color" id="smstt_icon_bg_color" name="smstt_icon_bg_color" value="<?php echo esc_attr(get_option('smstt_icon_bg_color')); ?>" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="smstt_icon_hover_color"><?php esc_html_e( 'Icon hover color :','smstt');?></label></th>
-                            <td>
-                                <input type="color" id="smstt_icon_hover_color" name="smstt_icon_hover_color" value="<?php echo esc_attr(get_option('smstt_icon_hover_color')); ?>" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="smstt_icon_bg_hover_color"><?php esc_html_e( 'Icon hover bg color :','smstt');?></label></th>
-                            <td>
-                                <input type="color" id="smstt_icon_bg_hover_color" name="smstt_icon_bg_hover_color" value="<?php echo esc_attr(get_option('smstt_icon_bg_hover_color')); ?>" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="smstt_icon_size_input"><?php esc_html_e( 'Icon Size :','smstt');?></label></th>
-                            <td>
-                                <input type="text" id="smstt_icon_size_input" placeholder="15px" name="smstt_icon_size_input" value="<?php echo esc_attr(get_option('smstt_icon_size_input')); ?>" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="smstt_icon_border_radius"><?php esc_html_e( 'Border Radius :','smstt');?></label></th>
-                            <td>
-                                <input type="text" id="smstt_icon_border_radius" placeholder="5px" name="smstt_icon_border_radius" value="<?php echo esc_attr(get_option('smstt_icon_border_radius')); ?>" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="smstt_icon_bottom"><?php esc_html_e( 'Distance :','smstt');?></label></th>
-                            <td>
-                                <input type="text" id="smstt_icon_bottom" placeholder="5px" name="smstt_icon_bottom" value="<?php echo esc_attr(get_option('smstt_icon_bottom')); ?>" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="smstt_icon_heght"><?php esc_html_e( 'Heght :','smstt');?></label></th>
-                            <td>
-                                <input type="text" id="smstt_icon_heght" placeholder="40px" name="smstt_icon_heght" value="<?php echo esc_attr(get_option('smstt_icon_heght')); ?>" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="smstt_icon_width"><?php esc_html_e( 'Width :','smstt');?></label></th>
-                            <td>
-                                <input type="text" id="smstt_icon_width" name="smstt_icon_width" placeholder="40px" value="<?php echo esc_attr(get_option('smstt_icon_width')); ?>" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="smstt_dropdown_possion_option"><?php esc_html_e( 'Select Possion:', 'smstt' ); ?></label></th>
-                            <td>
-                                <select id="smstt_dropdown_possion_option" name="smstt_dropdown_possion_option">
-                                    <?php
-                                    $smstt_dropdown_possion_option = get_option('smstt_dropdown_possion_option');
-                                    $smstt_options = array(
-                                        'right' => 'Right',
-                                        'left' => 'Left',
-                                    );
-
-                                    foreach ($smstt_options as $smstt_value => $smstt_label) {
-                                        echo '<option value="' . esc_attr($smstt_value) . '" ' . selected($smstt_dropdown_possion_option, $smstt_value, false) . '>' . esc_html($smstt_label) . '</option>';
-                                    }
-                                    ?>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><?php esc_html_e( 'Select Icon :', 'smstt' ); ?></th>
-                            <td>
-                                <?php
-                                $smstt_radio_icon_option = get_option('smstt_radio_icon_option', 'fa-solid fa-chevron-up');
-                                $smstt_radio_radio_options = array(
-                                    'fa-solid fa-chevron-up' => 'Top',
-                                    'fa-solid fa-chevron-left' => 'Left',
-                                    'fa-solid fa-chevron-right' => 'Right',
-                                    'fa-solid fa-chevron-down' => 'Down',
-                                );
-
-                                foreach ($smstt_radio_radio_options as $smstt_radio_icon_option_value => $smstt_radio_icon_options_label) {
-                                    echo '<label><input type="radio" name="smstt_radio_icon_option" value="' . esc_attr($smstt_radio_icon_option_value) . '" ' . checked($smstt_radio_icon_option, $smstt_radio_icon_option_value, false) . ' /> ' . esc_html($smstt_radio_icon_options_label) . '</label><br>';
-                                }
-                                ?>
-                            </td>
-                        </tr>
-
+                        <!-- Your form fields -->
                     </table>
                     <?php submit_button(); ?>
                 </form>
@@ -142,9 +52,10 @@ class SMSTT_Backend {
         </div>
         <?php
     }
+
     // Input Data Save
     public function smstt_submit_data() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['smstt_icon_size_input'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['smstt_nonce']) && wp_verify_nonce( $_POST['smstt_nonce'], 'smstt_submit_data' )) {
             // Handle form submission
             $new_icon_size = sanitize_text_field($_POST['smstt_icon_size_input']);
             $new_icon_color = sanitize_text_field($_POST['smstt_icon_color']);
@@ -172,27 +83,27 @@ class SMSTT_Backend {
         }
     }
     
-
     // Style Css Add
     public function smstt_head_style() {
         ?>
-        <style>
-            .topcontrol{
-                font-size: <?php echo esc_attr(get_option('smstt_icon_size_input', '10px')); ?>;
-                background-color: <?php echo esc_attr(get_option('smstt_icon_bg_color', '#333'))?>;
-                color: <?php echo esc_attr(get_option('smstt_icon_color', '#fff'))?>;
-                border-radius: <?php echo esc_attr(get_option('smstt_icon_border_radius', '0px'))?>;
-                height:<?php echo esc_attr(get_option('smstt_icon_heght', '40px'))?>;
-                width:<?php echo esc_attr(get_option('smstt_icon_width', '40px'))?>;
-                bottom: <?php echo esc_attr(get_option('smstt_icon_bottom', '5px'))?>!important;
-                right:<?php echo esc_attr(get_option('smstt_dropdown_possion_option', '5px'))?>;
+            <!-- CSS -->
+            <style>
+                .topcontrol{
+                    font-size: <?php echo esc_attr(get_option('smstt_icon_size_input', '10px')); ?>;
+                    background-color: <?php echo esc_attr(get_option('smstt_icon_bg_color', '#333'))?>;
+                    color: <?php echo esc_attr(get_option('smstt_icon_color', '#fff'))?>;
+                    border-radius: <?php echo esc_attr(get_option('smstt_icon_border_radius', '0px'))?>;
+                    height:<?php echo esc_attr(get_option('smstt_icon_heght', '40px'))?>;
+                    width:<?php echo esc_attr(get_option('smstt_icon_width', '40px'))?>;
+                    bottom: <?php echo esc_attr(get_option('smstt_icon_bottom', '5px'))?>!important;
+                    right:<?php echo esc_attr(get_option('smstt_dropdown_possion_option', '5px'))?>;
 
-            }
-            .topcontrol:hover{
-                color: <?php echo esc_attr(get_option('smstt_icon_hover_color', '#333'))?>;
-                background-color: <?php echo esc_attr(get_option('smstt_icon_bg_hover_color', '#fff'))?>;
-            }
-        </style>
+                }
+                .topcontrol:hover{
+                    color: <?php echo esc_attr(get_option('smstt_icon_hover_color', '#333'))?>;
+                    background-color: <?php echo esc_attr(get_option('smstt_icon_bg_hover_color', '#fff'))?>;
+                }
+            </style>
         <?php
     }
 
@@ -200,6 +111,7 @@ class SMSTT_Backend {
 
     public function smstt_wp_footer_script(){
         ?>
+        <!-- JavaScript -->
         <script>
             jQuery(document).ready(function($){
             var scrolltotop={
