@@ -1,0 +1,68 @@
+/* simpleminifyscrolltotop-admin-style.css */
+
+/* Style for the plugin page wrapper */
+.smstt-option-box {
+  margin: 20px;
+  background-color: #fff;
+  padding: 20px;
+}
+
+/* Style for the form table */
+.simpleminifyscrolltotop-form-table {
+  width: 100%;
+  max-width: 600px;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.simpleminifyscrolltotop-form-table th,
+.simpleminifyscrolltotop-form-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Style for the input field */
+#input_field {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px;
+  border-radius: 0px;
+}
+
+/* Optional: Style for the submit button */
+.submit {
+  margin-top: 20px;
+}
+.simpleminifyscrolltotop_plugin_page-area {
+  display: flex;
+  justify-content: space-between;
+
+}
+.simpleminifyscrolltotop-about-box {
+  width: 20%;
+  border-radius: 5px;
+  
+}
+.simpleminifyscrolltotop-option-box{
+  border-radius: 5px;
+
+}
+.simpleminifyscrolltotop-about-box p {
+  font-size: 16px;
+}
+.smstt-form-table>tbody > tr {
+    background: #f4f4f4;
+}
+table.smstt-form-table {
+    text-align: justify!important;
+}
+label.label-text{
+padding-left:10px;
+}
+th.label-text{
+padding-left:10px!important;
+}
+.data-table-items{
+padding:12px!important;
+}
